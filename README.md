@@ -5,8 +5,9 @@ A time saving tool, for translating domain names into IP addresses.
  ```bash
 git clone https://github.com/DE4601C3/dom2ip
 cd dom2ip
+dom2ip
 ```
-### To access the tool for anywhere
+### To access the tool from anywhere
 Add to local path by:
 ```bash
 sudo mv dom2ip /usr/local/bin
