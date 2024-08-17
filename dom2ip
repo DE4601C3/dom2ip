@@ -1,0 +1,48 @@
+#!/bin/bash
+
+#Utilities
+bold_red='\033[1;31m'
+reset_style='\033[0m'
+###################
+
+function dom2ip(){
+
+	var_host=$(host $1 | grep "has address")
+	if [ -n "$var_host" ]; then	
+		var_filter_txt=$(echo "$var_host" | awk '{print $1, $4}')
+		echo -e "\n${bold_red}IPv4 ($1): ${reset_style}\n$var_filter_txt";
+	fi
+
+	var_v6_host=$(host $1 | grep -i "IPv6");
+
+	if [ -n "$var_v6_host" ]; then
+		var_v6_filter_txt=$(echo "$var_v6_host" | awk '{print $1, $5}')
+		echo -e "\n${bold_red}IPv6 ($1): ${reset_style}";
+		echo "$var_v6_filter_txt";
+	fi
+
+echo "NOTE: Those domains (if any) are ignored who did not have an IP address!"
+}
+
+if [ "$#" -gt 1 ]; then
+	echo -e "\nError: Aggghhhhh! Too many arguments!!!\n"
+    echo "Usage: dom2ip <hostname-or-hostname-list-file>"
+
+elif [ "$#" -lt 1 ]; then
+	echo -e "\nUsage: dom2ip <hostname-or-hostname-list-file>"
+
+elif [ -f $1 ]; then
+	echo -e "Reading the file...\n"
+	while IFS= read -r line; do
+		first_word=$(echo "$line" | awk '{print $1}')
+    	dom2ip ${first_word}
+	done < "$1"
+	
+fi
+
+
+echo -e "\n";
+
+
+#The Malware Mender
+#@DE4601C3
