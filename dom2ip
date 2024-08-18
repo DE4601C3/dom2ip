@@ -20,8 +20,6 @@ function dom2ip(){
 		echo -e "\n${bold_red}IPv6 ($1): ${reset_style}";
 		echo "$var_v6_filter_txt";
 	fi
-
-echo "NOTE: Those domains (if any) are ignored who did not have an IP address!"
 }
 
 if [ "$#" -gt 1 ]; then
@@ -37,6 +35,7 @@ elif [ -f $1 ]; then
 		first_word=$(echo "$line" | awk '{print $1}')
     	dom2ip ${first_word}
 	done < "$1"
+	echo "\nNOTE: Those domains (if any) are ignored who did not have an IP address!"
 	
 fi
 
