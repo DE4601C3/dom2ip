@@ -33,10 +33,13 @@ elif [ -f $1 ]; then
 	echo -e "Reading the file...\n"
 	while IFS= read -r line; do
 		first_word=$(echo "$line" | awk '{print $1}')
-    	dom2ip ${first_word}
+		# If the line is empty, skip it.
+		if [ -z "$line" ]; then
+        		continue
+        	fi
+    		dom2ip ${first_word}
 	done < "$1"
-	echo -e "\nNOTE: Those domains (if any) are ignored who did not have an IP address!"
-	
+	echo -e "\nNOTE: THOSE DOMAINS (IF ANY) ARE IGNORED WHO DID NOT HAVE AN IP ADDRESS!"	
 fi
 
 
