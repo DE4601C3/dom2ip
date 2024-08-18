@@ -35,7 +35,7 @@ elif [ -f $1 ]; then
 		first_word=$(echo "$line" | awk '{print $1}')
     	dom2ip ${first_word}
 	done < "$1"
-	echo "\nNOTE: Those domains (if any) are ignored who did not have an IP address!"
+	echo -e "\nNOTE: Those domains (if any) are ignored who did not have an IP address!"
 	
 fi
 
