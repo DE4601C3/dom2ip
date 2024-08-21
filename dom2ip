@@ -39,9 +39,9 @@ elif [ -f $1 ]; then
         	fi
     		dom2ip ${first_word}
 	done < "$1"
-	echo -e "\nNOTE: THOSE DOMAINS (IF ANY) ARE IGNORED WHO DID NOT HAVE AN IP ADDRESS!"	
-fi
-
+		echo -e "\nNOTE: THOSE DOMAINS (IF ANY) ARE IGNORED WHO DID NOT HAVE AN IP ADDRESS!"
+else
+	dom2ip $1fi
 
 echo -e "\n";
 
